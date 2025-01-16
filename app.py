@@ -15,7 +15,7 @@ with st.container(border=True):
     st.text_input("Nome", key="name")
     st.number_input("Idade", key="age", min_value=0, max_value=120)
     cols = st.columns(2)
-    if st.button(":material/person: Criar pessoa", use_container_width=True):
+    if st.button(":material/person: Cadastrar pessoa", use_container_width=True):
         if st.session_state.get("name"):
             st.session_state["database"].append(Person(name=st.session_state["name"], age=st.session_state["age"]))
         else:
@@ -35,8 +35,8 @@ with st.container(border=True):
             person.place_card()
         with cols[1]:
             btn_cols = st.columns(2)
-            if btn_cols[0].button(":material/delete:", use_container_width=True, key=f"{person} delete"):
+            if btn_cols[0].button(":material/edit:", use_container_width=True, key=f"{person} edit"):
+                edit_person_dialog(person)
+            if btn_cols[1].button(":material/delete:", use_container_width=True, key=f"{person} delete"):
                 st.session_state["database"].remove(person)
                 st.rerun()
-            if btn_cols[1].button(":material/edit:", use_container_width=True, key=f"{person} edit"):
-                edit_person_dialog(person)

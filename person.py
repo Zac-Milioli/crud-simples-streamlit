@@ -47,10 +47,10 @@ class Person:
 def edit_person_dialog(person: Person):
     cols = st.columns(2)
     with cols[0].container(border=True):
-        st.markdown(f"Nome:\t{person.name}")
-        st.markdown(f"Idade:\t{person.age}")
-        st.markdown(f"Criação:\t{person.created_at}")
-        st.markdown(f"Update:\t{person.updated_at}")
+        st.markdown(f"Nome: {person.name}")
+        st.markdown(f"Idade: {person.age}")
+        st.markdown(f"Criado: {person.created_at}")
+        st.markdown(f"Update: {person.updated_at}")
     with cols[1]:
         st.text_input("Novo nome", value=person.name, placeholder=person.name, key="new_name")
         st.number_input("Nova Idade", value=person.age, placeholder=person.age, key="new_age", min_value=0, max_value=120)
